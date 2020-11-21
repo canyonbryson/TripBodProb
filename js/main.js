@@ -7,25 +7,36 @@ window.onload = function() {
     var slider1 = document.getElementById("m1");
     var slider2 = document.getElementById("m2");
     var slider3 = document.getElementById("m2");
-    var m1;
-    var m2;
-    var m3;
+    var masses = [];
     
     
     // Update the current slider value (each time you drag the slider handle)
     slider1.oninput = function() {
-        m1.mass = this.value;
+        if (masses.length > 0) {
+            masses[0].mass = this.value;
+            painter.draw();
+        }
     }
     slider2.oninput = function() {
-        m2.mass = this.value;
+        if (masses.length > 1) {
+            masses[1].mass = this.value;
+            painter.draw();
+        }
     }
     slider3.oninput = function() {
-        m3.mass = this.value;
+        if (masses.length > 2) {
+            masses[2].mass = this.value;
+            painter.draw();
+        }
     }
 
     window.addEventListener("click", function(e) {
-        painter.addObject(new Mass(painter, e.clientX, e.clientY, slider1.value, painterPath));
-        painter.draw();
+        if (masses.length < 3) {
+            let mass = new Mass(painter, e.clientX, e.clientY, slider1.value, painterPath);
+            masses.push(mass);
+            painter.addObject(mass);
+            painter.draw();
+        }
     });
 }
 
