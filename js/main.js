@@ -1,5 +1,7 @@
 window.onload = function() {
     let cvs = document.querySelector("#Canvas1");
+    cvs.width = window.innerWidth;
+    cvs.height = window.innerHeight;
     var painter = new Painter(cvs);
     var painterPath = new Painter(document.querySelector("#Canvas1"), false);
     var slider1 = document.getElementById("m1");
@@ -22,24 +24,8 @@ window.onload = function() {
     }
 
     window.addEventListener("click", function(e) {
-        count += 1;
-        if (count == 3) {
-            count -= 3;
-            m3 = new Mass(painter, e.clientX, e.clientY, slider3.value, painterPath)
-            painter.addObject(m3);
-            painter.draw();
-            Animate(m1, m2, m3, painter);
-        }
-        if (count == 2) {
-            m2 = new Mass(painter, e.clientX, e.clientY, slider2.value, painterPath)
-            painter.addObject(m2);
-            painter.draw();
-        }
-        else {
-            m1 = new Mass(painter, e.clientX, e.clientY, slider1.value, painterPath)
-            painter.addObject(m1);
-            painter.draw();
-        }
+        painter.addObject(new Mass(painter, e.clientX, e.clientY, slider1.value, painterPath));
+        painter.draw();
     });
 }
 
