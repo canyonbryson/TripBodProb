@@ -11,7 +11,7 @@ function updateVectors(masses) {
         for (mass in masses) {
             if (masses[i] != mass) {
             vectors.push(calculateGravity(mass, masses[i]));
-            masses[i].vector = addVector(masses[i].vector, mass.vector)
+            masses[i].vector = masses[i].addVector(mass.vector);
             }
         } //get a velocity vector for each mass
     }
