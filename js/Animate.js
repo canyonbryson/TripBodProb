@@ -1,8 +1,10 @@
-function Animate (masses, painter) {
-    var timestep = .1;
-    updateVectors(masses);
-    updatePosition(masses, timestep);
-    painter.draw();
+function Animate(masses, painter, clock) {
+    var timestep = 10;
+    clock = setInterval(function() {
+        updateVectors(masses);
+        updatePosition(masses, timestep);
+        painter.draw();
+    }, timestep);
 }
 
 function updateVectors(masses) {

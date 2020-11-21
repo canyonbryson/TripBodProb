@@ -4,10 +4,10 @@
     <title>TripBodProb</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
   <script src="js/vector.js" type="text/javascript"></script>
   <script src="js/painter.js" type="text/javascript"></script>
   <script src="js/gravity.js" type="text/javascript"></script>
@@ -19,8 +19,8 @@
 </head>
 
 <body>
-  <h1>Click to add masses.</h1>
-  <button onclick="run()" type="button" class="btn btn-danger">Run</button>
+  <h1 id="txtInfo">Click to add masses.</h1>
+  <button type="button" class="btn btn-danger" id="btnRun">Run</button>
   <div class='slidecontainercontainer'>
     <div class="slidecontainer">Mass 1
       <input type="range" min="1" max="100" value="50" class="slider" id="m1">

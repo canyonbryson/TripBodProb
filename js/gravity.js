@@ -16,7 +16,7 @@ function calculateAngle(x1, y1, x2, y2) {
     let xDist = x1 - x2;
     let yDist = y1 - y2;
     let dist = Math.sqrt(xDist ** 2 + yDist ** 2);
-    let theta = Math.asin(origY / _dist);
+    let theta = Math.asin(yDist / dist);
 
     if ((xDist < 0 && yDist > 0) || (xDist < 0 && yDist < 0)) { q = 2; theta = (Math.PI) + (theta * (-1)); } // quadrant II or III
     if (xDist > 0 && yDist < 0) { theta = 2 * Math.PI + theta; q = 4; } // quadrant IV

@@ -1,10 +1,14 @@
 * {
   margin: 0px;
-  color: white;
+  color: white !important;
+}
+
+h1 {
+  margin-left: 24px;
 }
 
 canvas {
-  z-index: -1;
+  z-index: -2;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -12,61 +16,46 @@ canvas {
 
 .slidecontainer {
   display: none;
+  margin-left: 24px;
+  margin-bottom: 8px;
   width: 30%;
-  /* Width of the outside container */
 }
 
-/* The slider itself */
 
 .slider {
-  -webkit-appearance: none;
-  /* Override default CSS styles */
   appearance: none;
-  width: 100%;
-  /* Full-width */
-  height: 25px;
-  /* Specified height */
   background: #d3d3d3;
-  /* Grey background */
-  outline: none;
-  /* Remove outline */
+  height: 25px;
   opacity: 0.7;
-  /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s;
-  /* 0.2 seconds transition on hover */
+  outline: none;
   transition: opacity .2s;
+  -webkit-appearance: none;
+  -webkit-transition: .2s;
+  width: 100%;
 }
-
-/* Mouse-over effects */
 
 .slider:hover {
   opacity: 1;
   /* Fully shown on mouse-over */
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  /* Override default look */
   appearance: none;
-  width: 25px;
-  /* Set a specific slider handle width */
-  height: 25px;
-  /* Slider handle height */
+  -webkit-appearance: none;
   background: #4CAF50;
-  /* Green background */
   cursor: pointer;
-  /* Cursor on hover */
+  height: 25px;
+  width: 25px;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  /* Set a specific slider handle width */
-  height: 25px;
-  /* Slider handle height */
   background: #4CAF50;
-  /* Green background */
   cursor: pointer;
-  /* Cursor on hover */
+  height: 25px;
+  width: 25px;
+}
+
+#btnRun {
+  display: none;
+  margin: 24px;
 }

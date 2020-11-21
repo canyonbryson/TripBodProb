@@ -12,7 +12,7 @@ window.onload = function() {
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
     var on = false;
-    
+    var clock;
     
     // Update the current slider value (each time you drag the slider handle)
     sliders[0].oninput = function() {
@@ -42,13 +42,21 @@ window.onload = function() {
             painter.addObject(mass);
             painter.draw();
         }
+        if (masses.length == 3) {
+            document.querySelector("#txtInfo").style.display = "none";
+            document.querySelector("#btnRun").style.display = "inline";
+        }
     });
 
-    function run() {
+    document.querySelector("#btnRun").addEventListener("click", function() {
         on = !on;
-        while (on) {
-            Animate(masses);
+        if (on) {
+            document.querySelector("#btnRun").innerHTML = "Stop";
+            Animate(masses, painter, clock);
+        } else {
+            document.querySelector("#btnRun").innerHTML = "Run";
+            clearInterval(clock);
         }
-    }
+    });
 }
 
