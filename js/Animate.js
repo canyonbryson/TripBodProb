@@ -10,12 +10,13 @@ function Animate(masses, painter, clock) {
 function updateVectors(masses) {
     var vectors = [];
     for (let i = 0; i < masses.length; i++) {
+        let gravityVector = new Vector(0, 0);
         for (let j = 0; j < masses.length; j++) {
             if (i != j) {
-                vectors.push(calculateGravity(masses[j], masses[i]));
-                masses[i].vector = masses[i].vector.addVector(masses[j].vector);
+                gravityVector = gravityVector.addVector(calculateGravity(masses[i], masses[j]));
             }
-        } //get a velocity vector for each mass
+        }
+        masses[i].vector = masses[i].vector.addVector(gravityVector);
     }
 }
 
