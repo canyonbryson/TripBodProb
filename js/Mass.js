@@ -5,7 +5,7 @@ class Mass {
         this.mass = mass;
         this.radius = mass * 1.5;
         this.painter = painter;
-
+        this.vector = new Vector(Math.PI/2, 10);
         this.path = new Path([this.x, this.y]);
         this.painter.addObject(this.path);
     }

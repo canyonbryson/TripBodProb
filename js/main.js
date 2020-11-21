@@ -6,6 +6,7 @@ window.onload = function() {
     var painterPath = new Painter(document.querySelector("#Canvas1"), false);
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
+    var on = false;
     
     
     // Update the current slider value (each time you drag the slider handle)
@@ -37,5 +38,12 @@ window.onload = function() {
             painter.draw();
         }
     });
+
+    function run() {
+        on = !on;
+        while (on) {
+            Animate(masses);
+        }
+    }
 }
 
