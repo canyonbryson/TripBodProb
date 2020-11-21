@@ -1,5 +1,5 @@
 function Animate(masses, painter, clock) {
-    var timestep = 10;
+    var timestep = 1000;
     clock = setInterval(function() {
         updateVectors(masses);
         updatePosition(masses, timestep);
@@ -10,10 +10,10 @@ function Animate(masses, painter, clock) {
 function updateVectors(masses) {
     var vectors = [];
     for (let i = 0; i < masses.length; i++) {
-        for (mass in masses) {
-            if (masses[i] != mass) {
-            vectors.push(calculateGravity(mass, masses[i]));
-            masses[i].vector = masses[i].addVector(mass.vector);
+        for (let j = 0; j < masses.length; j++) {
+            if (i != j) {
+                vectors.push(calculateGravity(masses[j], masses[i]));
+                masses[i].vector = masses[i].vector.addVector(masses[j].vector);
             }
         } //get a velocity vector for each mass
     }
