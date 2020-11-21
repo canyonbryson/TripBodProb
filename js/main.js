@@ -9,6 +9,7 @@ window.onload = function() {
     var m2;
     var m3;
     
+    
     // Update the current slider value (each time you drag the slider handle)
     slider1.oninput = function() {
         m1.mass = this.value;

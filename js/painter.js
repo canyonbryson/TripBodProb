@@ -4,6 +4,12 @@ class Painter {
         this.ctx = cvs.getContext("2d");
         this.objects = [];
         this.clear = clear;
+        // this.ctx.fillStyle = "black";
+        // this.ctx.strokeStyle = "black";
+        // this.ctx.beginPath();
+        // this.ctx.Rect(0, 0, this.cvs.width, this.cvs.height);
+        // this.ctx.fill();
+        // this.ctx.closePath();
     }
 
     addObject(obj) {
@@ -13,6 +19,12 @@ class Painter {
     draw() {
         if (this.clear)
             this.ctx.clearRect(0, 0, this.cvs.width, this.cvs.height);
+            this.ctx.fillStyle = "black";
+            this.ctx.strokeStyle = "black";
+            this.ctx.beginPath();
+            this.ctx.Rect(0, 0, this.cvs.width, this.cvs.height);
+            this.ctx.fill();
+            this.ctx.closePath();
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].draw(this.ctx);
         }
