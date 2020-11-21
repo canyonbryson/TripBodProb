@@ -1,7 +1,7 @@
 window.onload = function() {
     let cvs = document.querySelector("#Canvas1");
     var painter = new Painter(cvs);
-    var painterPath = new Painter(document.querySelector("#Canvas2"), false);
+    var painterPath = new Painter(document.querySelector("#Canvas1"), false);
     var slider1 = document.getElementById("m1");
     var slider2 = document.getElementById("m2");
     var slider3 = document.getElementById("m2");
