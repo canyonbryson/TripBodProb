@@ -3,7 +3,7 @@ window.onload = function() {
     let cvsBackground = document.querySelector("#canvasBackground");
 
     var painter = new Painter(cvs);
-    var painterBackground = new Painter(cvs);
+    var painterBackground = new Painter(cvsBackground, false);
     painter.addObject(painterBackground);
     painterBackground.addObject(new Background("rgba(0,0,0,0.001)"));
     painter.draw();
