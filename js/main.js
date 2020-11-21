@@ -8,17 +8,20 @@ window.onload = function() {
     var m1;
     var m2;
     var m3;
-    
+
     
     // Update the current slider value (each time you drag the slider handle)
     slider1.oninput = function() {
         m1.mass = this.value;
+        painter.draw();
     }
     slider2.oninput = function() {
         m2.mass = this.value;
+        painter.draw();
     }
     slider3.oninput = function() {
         m3.mass = this.value;
+        painter.draw();
     }
 
     window.addEventListener("click", function(e) {
