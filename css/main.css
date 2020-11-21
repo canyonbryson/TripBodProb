@@ -3,7 +3,7 @@
   color: white;
 }
 
-#Canvas1 {
+canvas {
   z-index: -1;
   position: absolute;
   top: 0px;

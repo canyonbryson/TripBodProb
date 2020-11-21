@@ -11,4 +11,12 @@ class Vector {
     get_y_component() {
         return Math.sin(this.direction) * this.magnitude;
     }
+
+    addVector(other) {
+        let x = this.get_x_component() + other.get_x_component();
+        let y = this.get_y_component() + other.get_y_component();
+        let magnitude = Math.sqrt(x ** 2 + y ** 2);
+        let direction = calculateAngle(0, 0, x, y);
+        return new Vector(direction, magnitude);
+    }
 }

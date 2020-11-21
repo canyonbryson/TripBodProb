@@ -1,9 +1,14 @@
 window.onload = function() {
-    let cvs = document.querySelector("#Canvas1");
-    cvs.width = window.innerWidth;
-    cvs.height = window.innerHeight;
+    let cvs = document.querySelector("#canvasForeground");
+    let cvsBackground = document.querySelector("#canvasBackground");
+
     var painter = new Painter(cvs);
-    var painterPath = new Painter(document.querySelector("#Canvas1"), false);
+    var painterBackground = new Painter(cvsBackground, false);
+    painter.addObject(painterBackground);
+    painterBackground.addObject(new Background("rgba(0,0,0,0.001)"));
+    painter.draw();
+    (new Background("black")).draw(painterBackground.ctx);
+
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
     var on = false;
@@ -31,7 +36,7 @@ window.onload = function() {
 
     window.addEventListener("click", function(e) {
         if (masses.length < 3) {
-            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterPath);
+            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground);
             sliders[masses.length].parentNode.style.display = "block";
             masses.push(mass);
             painter.addObject(mass);

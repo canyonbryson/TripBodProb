@@ -11,6 +11,7 @@ class Mass {
     }
 
     draw(ctx) {
+        this.path.addPoint([this.x, this.y]);
         ctx.fillStyle = "blue";
         ctx.strokeStyle = "blue";
         ctx.beginPath();
