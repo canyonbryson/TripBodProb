@@ -1,8 +1,12 @@
 // const G = 6.67E-11;
-const G = 50;
+const G = 150;
 
 function calculateGravity(mass1, mass2) {
-    let magnitude = (G * mass1.mass * mass2.mass) / (calculateDistance(mass1, mass2) ** 2);
+    let den = (calculateDistance(mass1, mass2) ** 2);
+    if (den < 0.1){
+        den = .1;
+    }
+    let magnitude = (G * mass1.mass * mass2.mass) / den;
     let direction = calculateAngle(mass1.x, mass1.y, mass2.x, mass2.y);
     return new Vector(direction, magnitude);
 }
