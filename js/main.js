@@ -42,7 +42,12 @@ window.onload = function() {
         on = !on;
         if (on) {
             document.querySelector("#btnRun").innerHTML = "Stop";
-            Animate(masses, painter, clock);
+            var timestep = 10;
+            clock = setInterval(function() {
+                updateVectors(masses);
+                updatePosition(masses, timestep);
+                painter.draw();
+            }, timestep);
         } else {
             document.querySelector("#btnRun").innerHTML = "Run";
             clearInterval(clock);
