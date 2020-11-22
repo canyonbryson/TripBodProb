@@ -35,6 +35,7 @@ window.onload = function() {
         if (masses.length == 3) {
             document.querySelector("#txtInfo").style.display = "none";
             document.querySelector("#btnRun").style.display = "inline";
+            painter.addObject(new Point(masses));
         }
     });
 

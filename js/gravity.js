@@ -30,3 +30,17 @@ function calculateAngle(x1, y1, x2, y2) {
 
     return Math.abs(Math.PI * 2 - theta);
 }
+
+function getCenterOfMass(masses) {
+    var numX;
+    var den;
+    var numY;
+    for (let i = 0; i < masses.length; i++) {
+        numX += masses[i].x * masses[i].mass;
+        numY += masses[i].y * masses[i].mass;
+        den += masses[i].mass;
+    }
+    var x = numX/den;
+    var y = numY/den;
+    return x, y;
+}
