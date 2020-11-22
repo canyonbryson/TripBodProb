@@ -1,5 +1,5 @@
 function Animate(masses, painter, clock) {
-    var timestep = 1000;
+    var timestep = 10;
     clock = setInterval(function() {
         updateVectors(masses);
         updatePosition(masses, timestep);
@@ -26,8 +26,8 @@ function updatePosition(masses, t) {
     for (let i = 0; i < masses.length; i++){
         let m = masses[i];
         let v = m.vector;
-        m.x += Math.cos(v[0]) * v[1] * t;
-        m.y += Math.sin(v[0]) * v[1] * t;
+        m.x += Math.round(v.get_x_component() * t / 1000);
+        m.y += Math.round(v.get_y_component() * t / 1000);
     }
 }
 
