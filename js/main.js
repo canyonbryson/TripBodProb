@@ -15,22 +15,12 @@ window.onload = function() {
     var clock;
     
     // Update the current slider value (each time you drag the slider handle)
-    sliders[0].oninput = function() {
-        if (masses.length > 0) {
-            masses[0].mass = this.value;
-            painter.draw();
-        }
-    }
-    sliders[1].oninput = function() {
-        if (masses.length > 1) {
-            masses[1].mass = this.value;
-            painter.draw();
-        }
-    }
-    sliders[2].oninput = function() {
-        if (masses.length > 2) {
-            masses[2].mass = this.value;
-            painter.draw();
+    for (let i = 0; i < 3; i++) {
+        sliders[i].oninput = function() {
+            if (masses.length > i) {
+                masses[i].mass = parseInt(this.value);
+                painter.draw();
+            }
         }
     }
 
