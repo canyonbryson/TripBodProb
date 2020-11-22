@@ -14,8 +14,11 @@ canvas {
   left: 0px;
 }
 
-.slidecontainer {
+#slidecontainercontainer {
   display: none;
+}
+
+.slidecontainer {
   margin-left: 24px;
   margin-bottom: 8px;
   width: 30%;

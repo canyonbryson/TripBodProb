@@ -3,6 +3,12 @@ function updateVectors(masses) {
         for (let j = 0; j < masses.length; j++) {
             if (i != j) {
                 let vector = calculateGravity(masses[i], masses[j]);
+                if ((i == 2 && j == 0) || i == 1) {
+                    // vector.direction += Math.PI;
+                    // if (vector.direction > Math.PI * 2) {
+                    //     vector.direction -= Math.PI * 2;
+                    // }
+                }
                 masses[i].vector = masses[i].vector.addVector(vector);
             }
         }
@@ -18,16 +24,16 @@ function updatePosition(masses, t) {
         m.x += v.get_x_component() * t / 1000;
         m.y += v.get_y_component() * t / 1000;
 
-        if (m.x < 0) {
-            m.x += window.innerWidth;
-        } else if (m.x > window.innerWidth) {
-            m.x -= window.innerWidth;
-        }
-        if (m.y < 0) {
-            m.y += window.innerHeight;
-        } else if (m.y > window.innerHeight) {
-            m.y -= window.innerHeight;
-        }
+        // if (m.x < 0) {
+        //     m.x += window.innerWidth;
+        // } else if (m.x > window.innerWidth) {
+        //     m.x -= window.innerWidth;
+        // }
+        // if (m.y < 0) {
+        //     m.y += window.innerHeight;
+        // } else if (m.y > window.innerHeight) {
+        //     m.y -= window.innerHeight;
+        // }
     }
 }
 

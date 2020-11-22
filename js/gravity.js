@@ -1,5 +1,5 @@
 // const G = 6.67E-11;
-const G = 200;
+const G = 50;
 
 function calculateGravity(mass1, mass2) {
     let magnitude = (G * mass1.mass * mass2.mass) / (calculateDistance(mass1, mass2) ** 2);

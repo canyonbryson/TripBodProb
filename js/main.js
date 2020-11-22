@@ -6,8 +6,10 @@ window.onload = function() {
     var painterBackground = new Painter(cvsBackground, true);
     painter.addObject(painterBackground);
     painterBackground.addObject(new Background("black", 1));
+    painterBackground.addObject(new Stars());
     painter.draw();
-    (new Background("black", 1.0)).draw(painterBackground.ctx);
+    // (new Background("black", 1.0)).draw(painterBackground.ctx);
+
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
@@ -26,13 +28,13 @@ window.onload = function() {
 
     window.addEventListener("click", function(e) {
         if (masses.length < 3) {
-            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground);
-            sliders[masses.length].parentNode.style.display = "block";
+            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground, masses.length);
             masses.push(mass);
             painter.addObject(mass);
             painter.draw();
         }
         if (masses.length == 3) {
+            document.querySelector("#slidecontainercontainer").style.display = "block";
             document.querySelector("#txtInfo").style.display = "none";
             document.querySelector("#btnRun").style.display = "inline";
             painter.addObject(new Point(masses));
