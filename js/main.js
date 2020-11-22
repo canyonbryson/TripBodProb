@@ -3,11 +3,11 @@ window.onload = function() {
     let cvsBackground = document.querySelector("#canvasBackground");
 
     var painter = new Painter(cvs);
-    var painterBackground = new Painter(cvsBackground, false);
+    var painterBackground = new Painter(cvsBackground, true);
     painter.addObject(painterBackground);
-    painterBackground.addObject(new Background("rgba(0,0,0,0.001)"));
+    painterBackground.addObject(new Background("black", 1));
     painter.draw();
-    (new Background("black")).draw(painterBackground.ctx);
+    (new Background("black", 1.0)).draw(painterBackground.ctx);
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
