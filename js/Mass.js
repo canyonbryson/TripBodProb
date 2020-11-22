@@ -1,5 +1,5 @@
 class Mass {
-    constructor(painter, x, y, mass) {
+    constructor(painter, x, y, mass, painterBackground) {
         this.x = x;
         this.y = y;
         this.mass = mass;
@@ -7,7 +7,7 @@ class Mass {
         this.painter = painter;
         this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 0.05);
         this.path = new Path([this.x, this.y]);
-        this.painter.addObject(this.path);
+        painterBackground.addObject(this.path);
     }
 
     draw(ctx) {
