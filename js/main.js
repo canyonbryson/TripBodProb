@@ -3,11 +3,11 @@ window.onload = function() {
     let cvsBackground = document.querySelector("#canvasBackground");
 
     var painter = new Painter(cvs);
-    var painterBackground = new Painter(cvsBackground, false);
+    var painterBackground = new Painter(cvsBackground, true);
     painter.addObject(painterBackground);
-    painterBackground.addObject(new Background("rgba(0,0,0,0.001)"));
+    painterBackground.addObject(new Background("black", 1));
     painter.draw();
-    (new Background("black")).draw(painterBackground.ctx);
+    (new Background("black", 1.0)).draw(painterBackground.ctx);
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
@@ -43,7 +43,12 @@ window.onload = function() {
         on = !on;
         if (on) {
             document.querySelector("#btnRun").innerHTML = "Stop";
-            Animate(masses, painter, clock);
+            var timestep = 10;
+            clock = setInterval(function() {
+                updateVectors(masses);
+                updatePosition(masses, timestep);
+                painter.draw();
+            }, timestep);
         } else {
             document.querySelector("#btnRun").innerHTML = "Run";
             clearInterval(clock);
