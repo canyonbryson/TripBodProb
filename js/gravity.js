@@ -39,10 +39,11 @@ function checkNaN(num) {
         return num;
     }
 }
+
 function getCenterOfMass(masses) {
-    var numX;
-    var den;
-    var numY;
+    var numX = 0;
+    var den = 0;
+    var numY = 0;
     for (let i = 0; i < masses.length; i++) {
         numX += masses[i].x * masses[i].mass;
         numY += masses[i].y * masses[i].mass;
@@ -50,5 +51,5 @@ function getCenterOfMass(masses) {
     }
     var x = numX/den;
     var y = numY/den;
-    return x, y;
+    return [x, y];
 }

@@ -2,7 +2,7 @@ class Mass {
     constructor(painter, x, y, mass, painterBackground) {
         this.x = x;
         this.y = y;
-        this.mass = mass;
+        this.mass = parseInt(mass);
         this.radius = mass * 1.5;
         this.painter = painter;
         //this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 10);

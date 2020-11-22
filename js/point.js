@@ -5,7 +5,9 @@ class Point {
         this.masses = masses;
     }
     draw(ctx){
-        this.x, this.y = getCenterOfMass(this.masses);
+        let coords = getCenterOfMass(this.masses);
+        this.x = coords[0];
+        this.y = coords[1];
         ctx.fillStyle = "white";
         ctx.strokeStyle = "white";
         ctx.beginPath();
