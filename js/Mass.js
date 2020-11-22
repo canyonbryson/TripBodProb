@@ -9,6 +9,7 @@ class Mass {
         this.vector = new Vector(0, 0);
         this.path = new Path([this.x, this.y]);
         painterBackground.addObject(this.path);
+        painter.addObject(new Arrow(this));
     }
 
     draw(ctx) {

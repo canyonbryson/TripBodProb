@@ -16,8 +16,9 @@ function calculateDistance(mass1, mass2) {
 function calculateAngle(x1, y1, x2, y2) { 
     let xDist = x2 - x1;
     let yDist = y2 - y1;
-    let dist = Math.sqrt(xDist ** 2 + yDist ** 2);
-    let theta = Math.asin(yDist / dist);
+    let dist = checkNaN(Math.sqrt(xDist ** 2 + yDist ** 2));
+
+    let theta = checkNaN(Math.asin(yDist / dist));
 
     if ((xDist < 0 && yDist > 0) || (xDist < 0 && yDist < 0)) { q = 2; theta = (Math.PI) + (theta * (-1)); } // quadrant II or III
     if (xDist > 0 && yDist < 0) { theta = 2 * Math.PI + theta; q = 4; } // quadrant IV
@@ -29,4 +30,12 @@ function calculateAngle(x1, y1, x2, y2) {
     if (theta > Math.PI * 2) { theta -= Math.PI * 2; }
 
     return Math.abs(Math.PI * 2 - theta);
+}
+
+function checkNaN(num) {
+    if (Number.isNaN(num) || num < 0.001) {
+        return 0;
+    } else {
+        return num;
+    }
 }

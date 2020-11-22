@@ -17,6 +17,17 @@ function updatePosition(masses, t) {
         let v = m.vector;
         m.x += v.get_x_component() * t / 1000;
         m.y += v.get_y_component() * t / 1000;
+
+        if (m.x < 0) {
+            m.x += window.innerWidth;
+        } else if (m.x > window.innerWidth) {
+            m.x -= window.innerWidth;
+        }
+        if (m.y < 0) {
+            m.y += window.innerHeight;
+        } else if (m.y > window.innerHeight) {
+            m.y -= window.innerHeight;
+        }
     }
 }
 
