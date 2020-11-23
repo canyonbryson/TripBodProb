@@ -3,7 +3,7 @@ class Point {
         this.x = -100;
         this.y = -100;
         this.masses = masses;
-        this.origin = getCenterOfMass(this.masses);
+        this.origin = this.getCenter();
     }
     getCenter() {
         let coords = getCenterOfMass(this.masses);
@@ -16,6 +16,7 @@ class Point {
         this.y = this.origin[1];
     }
     draw(ctx){
+        this.getCenter();
         ctx.fillStyle = "white";
         ctx.strokeStyle = "white";
         ctx.beginPath();

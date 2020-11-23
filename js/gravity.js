@@ -1,4 +1,3 @@
-// const G = 6.67E-11;
 const G = 1500;
 
 function calculateMaxMagnitudes(mass1, mass2, mass3) {

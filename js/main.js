@@ -3,7 +3,7 @@ window.onload = function() {
     let cvsBackground = document.querySelector("#canvasBackground");
 
     var painter = new Painter(cvs);
-    var painterBackground = new Painter(cvsBackground, true);
+    var painterBackground = new Painter(cvsBackground);
     painter.addObject(painterBackground);
     painterBackground.addObject(new Background("black", 1));
     painterBackground.addObject(new Stars());
@@ -42,8 +42,9 @@ window.onload = function() {
             document.querySelector("#slidecontainercontainer").style.display = "block";
             document.querySelector("#txtInfo").style.display = "none";
             document.querySelector("#mainButtons").style.display = "inline";
-            point  = new Point(masses);
+            point = new Point(masses);
             painter.addObject(point);
+            painter.draw();
         }
     });
 
