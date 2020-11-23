@@ -1,5 +1,6 @@
 class Path {
-    constructor(point) {
+    constructor(color, point) {
+        this.color = color;
         this.points = [point];
     }
 
@@ -12,7 +13,7 @@ class Path {
             this.points.shift();
         }
         if (this.points.length > 1) {
-            ctx.strokeStyle = "rgba(0,150,0,1)";
+            ctx.strokeStyle = this.color;
             for (let i = this.points.length - 1; i > 1; i--) {
                 ctx.beginPath();
                 ctx.globalAlpha = (i / this.points.length);

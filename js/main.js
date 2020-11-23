@@ -8,8 +8,8 @@ window.onload = function() {
     painterBackground.addObject(new Background("black", 1));
     painterBackground.addObject(new Stars());
     painter.draw();
-    // (new Background("black", 1.0)).draw(painterBackground.ctx);
 
+    let colors = ["FFF07C", "FFAAEA", "80FF72", "610F7F", "EF946C", "EF3E36", "17BEBB", "823161", "9A275A", "F61067"];
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
@@ -31,7 +31,9 @@ window.onload = function() {
 
     window.addEventListener("click", function(e) {
         if (masses.length < 3) {
-            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground, masses.length);
+            let rand = Math.floor(Math.random() * colors.length);
+            let removedColor = colors.splice(rand, 1)[0];
+            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground, masses.length, 1, "#" + removedColor);
             masses.push(mass);
             painter.addObject(mass);
             painter.draw();
