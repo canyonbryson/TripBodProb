@@ -35,7 +35,7 @@ class Mass {
                 grd.addColorStop(1, "rgba(0,0,0,0)");
                 grd.addColorStop(0.95, "rgba(0,0,0,0)");
                 grd.addColorStop(0.9, "black");
-                grd.addColorStop(0.81, this.color);
+                grd.addColorStop(0.8, this.color);
                 grd.addColorStop(0.8, "black");
                 grd.addColorStop(0, "black");
                 ctx.fillStyle = grd;
