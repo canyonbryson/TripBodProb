@@ -8,7 +8,7 @@ class Mass {
         this.maxMagnitude = 0;
         this.radius = 5 * this.mass / (2 * Math.PI);
         this.painter = painter;
-        this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 10000);
+        this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 6000 + 4000);
         // this.vector = new Vector(0, 0);
         this.color = color;
         this.path = new Path(color, [this.x, this.y]);
@@ -35,7 +35,7 @@ class Mass {
                 grd.addColorStop(1, "rgba(0,0,0,0)");
                 grd.addColorStop(0.95, "rgba(0,0,0,0)");
                 grd.addColorStop(0.9, "black");
-                grd.addColorStop(0.8, this.color);
+                grd.addColorStop(0.79, this.color);
                 grd.addColorStop(0.8, "black");
                 grd.addColorStop(0, "black");
                 ctx.fillStyle = grd;
