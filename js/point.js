@@ -1,13 +1,21 @@
 class Point {
     constructor(masses){
-        this.x = 0;
-        this.y = 0;
+        this.x = -100;
+        this.y = -100;
         this.masses = masses;
+        this.origin = getCenterOfMass(this.masses);
     }
-    draw(ctx){
+    getCenter() {
         let coords = getCenterOfMass(this.masses);
         this.x = coords[0];
         this.y = coords[1];
+        return [this.x, this.y];
+    }
+    moveToOrigin() {
+        this.x = this.origin[0];
+        this.y = this.origin[1];
+    }
+    draw(ctx){
         ctx.fillStyle = "white";
         ctx.strokeStyle = "white";
         ctx.beginPath();

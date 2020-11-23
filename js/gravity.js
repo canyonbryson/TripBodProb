@@ -1,5 +1,14 @@
 // const G = 6.67E-11;
-const G = 150;
+const G = 1500;
+
+function calculateMaxMagnitudes(mass1, mass2, mass3) {
+    let totalMass = mass1.mass + mass2.mass + mass3.mass;
+    let totalMax = 20 * totalMass;
+    let massRatios = [mass1.mass / totalMass, mass2.mass / totalMass, mass3.mass / totalMass];
+    mass1.maxMagnitude = massRatios[0] * totalMax;
+    mass2.maxMagnitude = massRatios[1] * totalMax;
+    mass3.maxMagnitude = massRatios[2] * totalMax;
+}
 
 function calculateGravity(mass1, mass2) {
     let den = (calculateDistance(mass1, mass2) ** 2);
@@ -7,6 +16,11 @@ function calculateGravity(mass1, mass2) {
         den = .1;
     }
     let magnitude = (G * mass1.mass * mass2.mass) / den;
+    // console.log(magnitude);
+    if (magnitude > mass1.maxMagnitude) {
+        magnitude = mass1.maxMagnitude;
+        //unchange the movement
+    }
     let direction = calculateAngle(mass1.x, mass1.y, mass2.x, mass2.y);
     return new Vector(direction, magnitude);
 }
@@ -14,7 +28,7 @@ function calculateGravity(mass1, mass2) {
 function calculateDistance(mass1, mass2) {
     let xDist = mass1.x - mass2.x;
     let yDist = mass1.y - mass2.y;
-    return Math.sqrt(xDist ** 2 + yDist ** 2);
+    return Math.sqrt(xDist ** 2 + yDist ** 2) / 8;
 }
 
 function calculateAngle(x1, y1, x2, y2) { 
@@ -45,15 +59,35 @@ function checkNaN(num) {
 }
 
 function getCenterOfMass(masses) {
-    var numX = 0;
-    var den = 0;
-    var numY = 0;
-    for (let i = 0; i < masses.length; i++) {
-        numX += masses[i].x * masses[i].mass;
-        numY += masses[i].y * masses[i].mass;
-        den += masses[i].mass;
+    if (masses.length > 0){
+        var numX = 0;
+        var den = 0;
+        var numY = 0;
+        for (let i = 0; i < masses.length; i++) {
+            numX += masses[i].x * masses[i].mass;
+            numY += masses[i].y * masses[i].mass;
+            den += masses[i].mass;
+        }
+        var x = numX/den;
+        var y = numY/den;
+        return [x, y];
     }
-    var x = numX/den;
-    var y = numY/den;
-    return [x, y];
+    else {
+        return [-100, -100];
+    }
+}
+
+function recenter(masses, point) {
+    // remember old center?
+    // fix it
+    // move other masses the same
+    let oldCenter = point.origin;
+    let currentCenter = point.getCenter();
+    let difX = oldCenter[0] - currentCenter[0];
+    let difY = oldCenter[1] - currentCenter[1];
+    point.moveToOrigin();
+    for (let i = 0; i < masses.length; i++){
+        masses[i].x += difX;
+        masses[i].y += difY;
+    }
 }

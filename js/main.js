@@ -13,14 +13,17 @@ window.onload = function() {
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];
+    var maxMagnitudes = [];
     var on = false;
     var clock;
+    var point;
     
     // Update the current slider value (each time you drag the slider handle)
     for (let i = 0; i < 3; i++) {
         sliders[i].oninput = function() {
             if (masses.length > i) {
                 masses[i].mass = parseInt(this.value);
+                maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
                 painter.draw();
             }
         }
@@ -37,18 +40,20 @@ window.onload = function() {
             document.querySelector("#slidecontainercontainer").style.display = "block";
             document.querySelector("#txtInfo").style.display = "none";
             document.querySelector("#btnRun").style.display = "inline";
-            painter.addObject(new Point(masses));
+            point  = new Point(masses);
+            painter.addObject(point);
         }
     });
 
     document.querySelector("#btnRun").addEventListener("click", function() {
         on = !on;
         if (on) {
+            maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
             document.querySelector("#btnRun").innerHTML = "Stop";
             var timestep = 10;
             clock = setInterval(function() {
                 updateVectors(masses);
-                updatePosition(masses, timestep);
+                updatePosition(masses, timestep, point);
                 painter.draw();
             }, timestep);
         } else {

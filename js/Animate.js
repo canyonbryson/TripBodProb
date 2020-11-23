@@ -15,26 +15,27 @@ function updateVectors(masses) {
     }
 }
 
-function updatePosition(masses, t) {
+function updatePosition(masses, t, point) {
     //get vector(direction, magnitude)
     //update x, y based on vector and timestep
     for (let i = 0; i < masses.length; i++){
         let m = masses[i];
         let v = m.vector;
-        m.x += v.get_x_component() * t / 1000;
-        m.y += v.get_y_component() * t / 1000;
+        m.x += (v.get_x_component() * t / 1000) / masses[i].mass / 2;
+        m.y += (v.get_y_component() * t / 1000) / masses[i].mass / 2;
 
-        if (m.x < 0) {
-            m.x += window.innerWidth;
-        } else if (m.x > window.innerWidth) {
-            m.x -= window.innerWidth;
-        }
-        if (m.y < 0) {
-            m.y += window.innerHeight;
-        } else if (m.y > window.innerHeight) {
-            m.y -= window.innerHeight;
-        }
+        // if (m.x < 0) {
+        //     m.x += window.innerWidth;
+        // } else if (m.x > window.innerWidth) {
+        //     m.x -= window.innerWidth;
+        // }
+        // if (m.y < 0) {
+        //     m.y += window.innerHeight;
+        // } else if (m.y > window.innerHeight) {
+        //     m.y -= window.innerHeight;
+        // }
     }
+    recenter(masses, point);
 }
 
 
