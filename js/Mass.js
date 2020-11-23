@@ -38,9 +38,7 @@ class Mass {
                 break;
             case 1: 
                 var grd = ctx.createRadialGradient(this.x, this.y, 1, this.x, this.y, this.radius);
-                grd.addColorStop(1, "rgba(0,0,0,0)");
-                // grd.addColorStop(0.9, "rgba(0,0,0,0)");
-                // grd.addColorStop(0.9, "black");
+                grd.addColorStop(1, "rgba(0,0,0,0)"); // transparent
                 grd.addColorStop(0.91, this.color);
                 grd.addColorStop(0.9, "black");
                 grd.addColorStop(0, "black");
