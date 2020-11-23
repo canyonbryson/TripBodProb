@@ -52,6 +52,7 @@ window.onload = function() {
         if (on) {
             maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
             document.querySelector("#btnRun").innerHTML = "Stop";
+            document.querySelector("#divInitVelocity").style.display = "none";
             var timestep = 10;
             clock = setInterval(function() {
                 updateVectors(masses);
