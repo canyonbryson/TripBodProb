@@ -17,7 +17,7 @@ class Mass {
     }
 
     nextIcon() {
-        if (this.icon == 1) {
+        if (this.icon == 2) {
             this.icon = 0;
         } else {
             this.icon++;
@@ -46,6 +46,13 @@ class Mass {
                 grd.addColorStop(0, "black");
                 ctx.fillStyle = grd;
                 ctx.fillRect(this.x - this.radius, this.y - this.radius, this.x + this.radius * 2, this.y + this.radius * 2);
+                break;
+            case 2:
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.vector.direction);
+                ctx.drawImage(document.querySelector("#icon2"), -this.radius, -this.radius, this.radius * 2, this.radius * 2);
+                ctx.restore();
         }
     }
 }
