@@ -16,10 +16,10 @@ canvas {
 
 #slidecontainercontainer {
   display: none;
+  margin-left: 24px;
 }
 
 .slidecontainer {
-  margin-left: 24px;
   margin-bottom: 8px;
   width: 30%;
 }
@@ -61,7 +61,6 @@ canvas {
 }
 
 #btnRun {
-  display: none;
   margin: 24px;
 }
 
@@ -71,4 +70,8 @@ canvas {
 
 .btnImg {
   margin: 10px;
+}
+
+#mainButtons {
+  display: none;
 }

@@ -41,7 +41,7 @@ window.onload = function() {
         if (masses.length == 3) {
             document.querySelector("#slidecontainercontainer").style.display = "block";
             document.querySelector("#txtInfo").style.display = "none";
-            document.querySelector("#btnRun").style.display = "inline";
+            document.querySelector("#mainButtons").style.display = "inline";
             point  = new Point(masses);
             painter.addObject(point);
         }
@@ -64,8 +64,35 @@ window.onload = function() {
         }
     });
 
-    // document.addEventListener("mousemove", function(e) {
-    //     console.log(calculateAngle(masses[0].x, masses[0].y, e.clientX, e.clientY));
-    // });
+    for (let i = 0; i < 3; i++) {
+        document.querySelector("#btnImg" + i).addEventListener("click", function() {
+            masses[i].nextIcon();
+            painter.draw();
+        });
+    }
+
+    document.querySelector("#btnHide").addEventListener("click", function() {
+        let container = document.querySelector("#detailsContainer");
+        if (container.style.display == "none") {
+            this.innerHTML = "Hide Details";
+            container.style.display = "block";
+        } else {
+            this.innerHTML = "Show Details";
+            container.style.display = "none";
+        }
+    });
+
+    document.querySelector("#checkboxInitialVelocity").addEventListener("change", function() {
+        if (this.checked) {
+            for (let i = 0; i < masses.length; i++) {
+                masses[i].vector = new Vector(0, 0, true);
+            }
+        } else {
+            for (let i = 0; i < masses.length; i++) {
+                masses[i].vector = new Vector(0, 0);
+            }
+        }
+        painter.draw();
+    });
 }
 

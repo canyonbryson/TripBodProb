@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>TripBodProb</title>
+  <title>TripBodProb</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,19 +23,29 @@
 
 <body>
   <h1 id="txtInfo">Click to add masses.</h1>
-  <button type="button" class="btn btn-danger" id="btnRun">Run</button>
-  <div id='slidecontainercontainer'>
-    <div class="slidecontainer">Mass 1
-      <button type="button" class="btnImg btn btn-primary">Change Image</button>
-      <input type="range" min="10" max="50" value="25" class="slider" id="m1">
-    </div>
-    <div class="slidecontainer">Mass 2
-      <button type="button" class="btnImg btn btn-primary">Change Image</button>
-      <input type="range" min="10" max="50" value="25" class="slider" id="m2">
-    </div>
-    <div class="slidecontainer">Mass 3
-      <button type="button" class="btnImg btn btn-primary">Change Image</button>
-      <input type="range" min="10" max="50" value="25" class="slider" id="m3">
+  <div id="mainButtons">
+    <button type="button" class="btn btn-danger" id="btnRun">Run</button>
+    <button id="btnHide" type="button" class="btn btn-primary">Hide Details</button>
+  </div>
+  <div id="detailsContainer">
+    <div id='slidecontainercontainer'>
+
+      <div class="slidecontainer">Mass 1
+        <button id="btnImg0" type="button" class="btnImg btn btn-primary">Change Image</button>
+        <input type="range" min="10" max="50" value="25" class="slider" id="m1">
+      </div>
+      <div class="slidecontainer">Mass 2
+        <button id="btnImg1" type="button" class="btnImg btn btn-primary">Change Image</button>
+        <input type="range" min="10" max="50" value="25" class="slider" id="m2">
+      </div>
+      <div class="slidecontainer">Mass 3
+        <button id="btnImg2" type="button" class="btnImg btn btn-primary">Change Image</button>
+        <input type="range" min="10" max="50" value="25" class="slider" id="m3">
+      </div>
+      <input class="form-check-input" type="checkbox" checked id="checkboxInitialVelocity">
+      <label class="form-check-label" for="checkboxInitialVelocity">
+        Initial velocities?
+      </label>
     </div>
   </div>
   <canvas id="canvasBackground"></canvas>

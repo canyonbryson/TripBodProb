@@ -8,12 +8,20 @@ class Mass {
         this.maxMagnitude = 0;
         this.radius = 5 * this.mass / (2 * Math.PI);
         this.painter = painter;
-        this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 10000);
+        this.vector = new Vector(0, 0, true); // random initial velocity
         // this.vector = new Vector(0, 0);
         this.color = color;
         this.path = new Path(color, [this.x, this.y]);
         painterBackground.addObject(this.path);
         painter.addObject(new Arrow(this));
+    }
+
+    nextIcon() {
+        if (this.icon == 1) {
+            this.icon = 0;
+        } else {
+            this.icon++;
+        }
     }
 
     draw(ctx) {
@@ -29,18 +37,15 @@ class Mass {
                 ctx.closePath();
                 break;
             case 1: 
-                // let img = document.querySelector("#icon0");
-                // ctx.drawImage(img, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
                 var grd = ctx.createRadialGradient(this.x, this.y, 1, this.x, this.y, this.radius);
                 grd.addColorStop(1, "rgba(0,0,0,0)");
-                grd.addColorStop(0.95, "rgba(0,0,0,0)");
+                // grd.addColorStop(0.9, "rgba(0,0,0,0)");
+                // grd.addColorStop(0.9, "black");
+                grd.addColorStop(0.91, this.color);
                 grd.addColorStop(0.9, "black");
-                grd.addColorStop(0.81, this.color);
-                grd.addColorStop(0.8, "black");
                 grd.addColorStop(0, "black");
                 ctx.fillStyle = grd;
                 ctx.fillRect(this.x - this.radius, this.y - this.radius, this.x + this.radius * 2, this.y + this.radius * 2);
-                // ctx.fillRect(0, 0, this.radius * 2, this.radius * 2);
         }
     }
 }

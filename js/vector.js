@@ -1,7 +1,11 @@
 class Vector {
-    constructor(direction, magnitude) {
+    constructor(direction, magnitude, random=false) {
         this.direction = direction;
         this.magnitude = magnitude;
+        if (random) {
+            this.direction = Math.random() * Math.PI * 2;
+            this.magnitude = Math.random() * 10000 + 5000;
+        }
     }
 
     get_x_component() {
