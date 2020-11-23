@@ -9,7 +9,7 @@ window.onload = function() {
     painterBackground.addObject(new Stars());
     painter.draw();
 
-    let colors = ["FFF07C", "FFAAEA", "80FF72", "610F7F", "EF946C", "EF3E36", "17BEBB", "823161", "9A275A", "F61067"];
+    let colors = ["FFF07C", "FFAAEA", "80FF72", "d319d7", "eb7a49", "e01b12", "17BEBB", "F61067"];
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
     var masses = [];

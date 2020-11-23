@@ -68,3 +68,7 @@ canvas {
 .icon {
     display: none;
 }
+
+.btnImg {
+  margin: 10px;
+}
