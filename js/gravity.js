@@ -37,7 +37,7 @@ function calculateAngle(x1, y1, x2, y2) {
 }
 
 function checkNaN(num) {
-    if (Number.isNaN(num) || num < 0.001) {
+    if (Number.isNaN(num) || Math.abs(num) < 0.001) {
         return 0;
     } else {
         return num;

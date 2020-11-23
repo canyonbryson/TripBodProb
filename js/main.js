@@ -56,5 +56,9 @@ window.onload = function() {
             clearInterval(clock);
         }
     });
+
+    // document.addEventListener("mousemove", function(e) {
+    //     console.log(calculateAngle(masses[0].x, masses[0].y, e.clientX, e.clientY));
+    // });
 }
 

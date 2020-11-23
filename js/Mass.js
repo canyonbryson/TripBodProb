@@ -5,8 +5,8 @@ class Mass {
         this.mass = parseInt(mass);
         this.radius = mass * 0.75;
         this.painter = painter;
-        //this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 10);
-        this.vector = new Vector(0, 0);
+        this.vector = new Vector(Math.random() * Math.PI * 2, Math.random() * 200);
+        // this.vector = new Vector(0, 0);
         this.path = new Path([this.x, this.y]);
         painterBackground.addObject(this.path);
         painter.addObject(new Arrow(this));
