@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     let cvs = document.querySelector("#canvasForeground");
     let cvsBackground = document.querySelector("#canvasBackground");
 
@@ -20,11 +20,11 @@ window.onload = function() {
     var clock;
     var point;
 
-    
-    
+
+
     // Update the current slider value (each time you drag the slider handle)
     for (let i = 0; i < 3; i++) {
-        sliders[i].oninput = function() {
+        sliders[i].oninput = function () {
             if (masses.length > i) {
                 masses[i].mass = parseInt(this.value);
                 maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
@@ -34,7 +34,7 @@ window.onload = function() {
     }
 
     for (let i = 0; i < 3; i++) {
-        angle[i].oninput = function() {
+        angle[i].oninput = function () {
             if (masses.length > i) {
                 masses[i].vector.direction = parseInt(this.value) / 1000;
                 painter.draw();
@@ -43,7 +43,7 @@ window.onload = function() {
     }
 
     for (let i = 0; i < 3; i++) {
-        velocity[i].oninput = function() {
+        velocity[i].oninput = function () {
             if (masses.length > i) {
                 masses[i].vector.magnitude = parseInt(this.value);
                 painter.draw();
@@ -51,7 +51,7 @@ window.onload = function() {
         }
     }
 
-    window.addEventListener("click", function(e) {
+    window.addEventListener("click", function (e) {
         if (masses.length < 3) {
             let rand = Math.floor(Math.random() * colors.length);
             let removedColor = colors.splice(rand, 1)[0];
@@ -70,14 +70,14 @@ window.onload = function() {
         }
     });
 
-    document.querySelector("#btnRun").addEventListener("click", function() {
+    document.querySelector("#btnRun").addEventListener("click", function () {
         on = !on;
         if (on) {
             maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
             document.querySelector("#btnRun").innerHTML = "Stop";
             // document.querySelector("#divInitVelocity").style.display = "none";
             var timestep = 10;
-            clock = setInterval(function() {
+            clock = setInterval(function () {
                 updateVectors(masses);
                 updatePosition(masses, timestep, point);
                 painter.draw();
@@ -89,13 +89,13 @@ window.onload = function() {
     });
 
     for (let i = 0; i < 3; i++) {
-        document.querySelector("#btnImg" + i).addEventListener("click", function() {
+        document.querySelector("#btnImg" + i).addEventListener("click", function () {
             masses[i].nextIcon();
             painter.draw();
         });
     }
 
-    document.querySelector("#btnHide").addEventListener("click", function() {
+    document.querySelector("#btnHide").addEventListener("click", function () {
         let container = document.querySelector("#detailsContainer");
         if (container.style.display == "none") {
             this.innerHTML = "Hide Details";
@@ -106,61 +106,50 @@ window.onload = function() {
         }
     });
 
-    // document.querySelector("#checkboxInitialVelocity").addEventListener("change", function() {
-    //     if (this.checked) {
-    //         for (let i = 0; i < masses.length; i++) {
-    //             masses[i].vector = new Vector(0, 0, true);
-    //         }
-    //     } else {
-    //         for (let i = 0; i < masses.length; i++) {
-    //             masses[i].vector = new Vector(0, 0);
-    //         }
-    //     }
-    //     painter.draw();
-    // });
+    $("#btnMass").click(function () {
+        $("#btnMass").addClass("btn-success");
+        $("#btnMass").removeClass("btn-secondary");
+        $("#btnAngle").addClass("btn-secondary");
+        $("#btnAngle").removeClass("btn-success");
+        $("#btnVelocity").addClass("btn-secondary");
+        $("#btnVelocity").removeClass("btn-success");
+        for (let i = 1; i < 4; i++) {
+            $("#label" + i).html("Mass " + i);
+            $("#m" + i).show();
+            $("#v" + i).hide();
+            $("#a" + i).hide();
+        }
+    });
 
-    for (let i = 1; i < 4; i++){
-        document.querySelector("#mass" + i).addEventListener("click", function() {
-            let x = document.getElementById("m"+i);
-            let y = document.getElementById("v"+i);
-            let z = document.getElementById("a"+i);
-            if (x.style.display === "none") {
-              x.style.display = "block";
-              y.style.display = 'none';
-              z.style.display = 'none';
-            } else {
-              x.style.display = "none";
-            }        
-        });
-            
-    }
-    for (let i = 1; i < 4; i++){
-        document.querySelector("#vel" + i).addEventListener("click", function() {
-            let y = document.getElementById("m"+i);
-            let x = document.getElementById("v"+i);
-            let z = document.getElementById("a"+i);
-            if (x.style.display === "none") {
-              x.style.display = "block";
-              y.style.display = 'none';
-              z.style.display = 'none';
-            } else {
-              x.style.display = "none";
-            }         
-        });
-    }
-    for (let i = 1; i < 4; i++){
-        document.querySelector("#angle" + i).addEventListener("click", function() {
-            let z = document.getElementById("m"+i);
-            let y = document.getElementById("v"+i);
-            let x = document.getElementById("a"+i);
-            if (x.style.display === "none") {
-              x.style.display = "block";
-              y.style.display = 'none';
-              z.style.display = 'none';
-            } else {
-              x.style.display = "none";
-            }         
-        });
-    }
+    $("#btnVelocity").click(function () {
+        $("#btnVelocity").addClass("btn-success");
+        $("#btnVelocity").removeClass("btn-secondary");
+        $("#btnAngle").addClass("btn-secondary");
+        $("#btnAngle").removeClass("btn-success");
+        $("#btnMass").addClass("btn-secondary");
+        $("#btnMass").removeClass("btn-success");
+        for (let i = 1; i < 4; i++) {
+            $("#label" + i).html("Velocity " + i);
+            $("#m" + i).hide();
+            $("#v" + i).show();
+            $("#a" + i).hide();
+        }
+    });
+
+    $("#btnAngle").click(function () {
+        $("#btnAngle").addClass("btn-success");
+        $("#btnAngle").removeClass("btn-secondary");
+        $("#btnVelocity").addClass("btn-secondary");
+        $("#btnVelocity").removeClass("btn-success");
+        $("#btnMass").addClass("btn-secondary");
+        $("#btnMass").removeClass("btn-success");
+        for (let i = 1; i < 4; i++) {
+            $("#label" + i).html("Angle " + i);
+            $("#m" + i).hide();
+            $("#v" + i).hide();
+            $("#a" + i).show();
+        }
+    });
+
 }
 
