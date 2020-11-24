@@ -60,8 +60,8 @@ canvas {
   width: 25px;
 }
 
-#btnRun {
-  margin: 24px;
+#mainButtons > button {
+  margin: 24px 0px 24px 24px;
 }
 
 .icon {
