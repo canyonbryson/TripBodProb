@@ -70,7 +70,7 @@ window.onload = function () {
         }
     });
 
-    document.querySelector("#btnRun").addEventListener("click", function () {
+    $("#btnRun").click(function () {
         on = !on;
         if (on) {
             maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
@@ -89,20 +89,20 @@ window.onload = function () {
     });
 
     for (let i = 0; i < 3; i++) {
-        document.querySelector("#btnImg" + i).addEventListener("click", function () {
+        $("#btnImg" + i).click(function () {
             masses[i].nextIcon();
             painter.draw();
         });
     }
 
-    document.querySelector("#btnHide").addEventListener("click", function () {
-        let container = document.querySelector("#detailsContainer");
-        if (container.style.display == "none") {
+    $("#btnHide").click(function () {
+        let container = $("#detailsContainer");
+        if (!container.is(":visible")) {
             this.innerHTML = "Hide Details";
-            container.style.display = "block";
+            container.show();
         } else {
             this.innerHTML = "Show Details";
-            container.style.display = "none";
+            container.hide();
         }
     });
 
