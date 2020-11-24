@@ -75,3 +75,11 @@ canvas {
 #mainButtons {
   display: none;
 }
+
+.form-check-input {
+  margin-left: 0px;
+}
+
+.form-check-label {
+  margin-left: 20px;
+}
