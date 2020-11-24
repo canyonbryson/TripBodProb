@@ -1,19 +1,22 @@
 class Mass {
-    constructor(painter, x, y, mass, painterBackground, id, icon, color) {
+    constructor(painter, x, y, mass, painterBackground, id, icon, color, vel, angle) {
         this.icon = icon;
         this.id = id;
         this.x = x;
         this.y = y;
         this.mass = parseInt(mass);
         this.maxMagnitude = 0;
-        this.radius = 5 * this.mass / (2 * Math.PI);
+        this.radius = 10* this.mass ** (1/3);
         this.painter = painter;
-        this.vector = new Vector(0, 0, true); // random initial velocity
+        this.velocity = vel;
+        this.angle = angle;
+        this.vector = new Vector(angle, vel); // user input initial velocity
         // this.vector = new Vector(0, 0);
         this.color = color;
         this.path = new Path(color, [this.x, this.y]);
         painterBackground.addObject(this.path);
-        painter.addObject(new Arrow(this));
+        this.arrow = new Arrow(this);
+        painter.addObject(this.arrow);
     }
 
     nextIcon() {
@@ -25,7 +28,7 @@ class Mass {
     }
 
     draw(ctx) {
-        this.radius = 10 * this.mass / (2 * Math.PI);
+        this.radius = 10 * this.mass ** (1/3);
         this.path.addPoint([this.x, this.y]);
         switch (this.icon) {
             case 0:

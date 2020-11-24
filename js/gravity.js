@@ -1,4 +1,4 @@
-const G = 1500;
+const G = 100;
 
 function calculateMaxMagnitudes(mass1, mass2, mass3) {
     let totalMass = mass1.mass + mass2.mass + mass3.mass;
@@ -27,7 +27,7 @@ function calculateGravity(mass1, mass2) {
 function calculateDistance(mass1, mass2) {
     let xDist = mass1.x - mass2.x;
     let yDist = mass1.y - mass2.y;
-    return Math.sqrt(xDist ** 2 + yDist ** 2) / 8;
+    return Math.sqrt(xDist ** 2 + yDist ** 2) / 12;
 }
 
 function calculateAngle(x1, y1, x2, y2) { 

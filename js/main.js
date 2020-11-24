@@ -12,11 +12,15 @@ window.onload = function() {
     let colors = ["FFF07C", "FFAAEA", "80FF72", "d319d7", "eb7a49", "e01b12", "17BEBB", "F61067"];
 
     var sliders = [document.getElementById("m1"), document.getElementById("m2"), document.getElementById("m3")];
+    var angle = [document.getElementById("a1"), document.getElementById("a2"), document.getElementById("a3")];
+    var velocity = [document.getElementById("v1"), document.getElementById("v2"), document.getElementById("v3")];
     var masses = [];
     var maxMagnitudes = [];
     var on = false;
     var clock;
     var point;
+
+    
     
     // Update the current slider value (each time you drag the slider handle)
     for (let i = 0; i < 3; i++) {
@@ -29,11 +33,29 @@ window.onload = function() {
         }
     }
 
+    for (let i = 0; i < 3; i++) {
+        angle[i].oninput = function() {
+            if (masses.length > i) {
+                masses[i].vector.direction = parseInt(this.value) / 1000;
+                painter.draw();
+            }
+        }
+    }
+
+    for (let i = 0; i < 3; i++) {
+        velocity[i].oninput = function() {
+            if (masses.length > i) {
+                masses[i].vector.magnitude = parseInt(this.value);
+                painter.draw();
+            }
+        }
+    }
+
     window.addEventListener("click", function(e) {
         if (masses.length < 3) {
             let rand = Math.floor(Math.random() * colors.length);
             let removedColor = colors.splice(rand, 1)[0];
-            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground, masses.length, 1, "#" + removedColor);
+            let mass = new Mass(painter, e.clientX, e.clientY, sliders[masses.length].value, painterBackground, masses.length, 1, "#" + removedColor, velocity[masses.length].value, angle[masses.length].value);
             masses.push(mass);
             painter.addObject(mass);
             painter.draw();
@@ -53,7 +75,7 @@ window.onload = function() {
         if (on) {
             maxMagnitudes = calculateMaxMagnitudes(masses[0], masses[1], masses[2]);
             document.querySelector("#btnRun").innerHTML = "Stop";
-            document.querySelector("#divInitVelocity").style.display = "none";
+            // document.querySelector("#divInitVelocity").style.display = "none";
             var timestep = 10;
             clock = setInterval(function() {
                 updateVectors(masses);
@@ -84,17 +106,61 @@ window.onload = function() {
         }
     });
 
-    document.querySelector("#checkboxInitialVelocity").addEventListener("change", function() {
-        if (this.checked) {
-            for (let i = 0; i < masses.length; i++) {
-                masses[i].vector = new Vector(0, 0, true);
-            }
-        } else {
-            for (let i = 0; i < masses.length; i++) {
-                masses[i].vector = new Vector(0, 0);
-            }
-        }
-        painter.draw();
-    });
+    // document.querySelector("#checkboxInitialVelocity").addEventListener("change", function() {
+    //     if (this.checked) {
+    //         for (let i = 0; i < masses.length; i++) {
+    //             masses[i].vector = new Vector(0, 0, true);
+    //         }
+    //     } else {
+    //         for (let i = 0; i < masses.length; i++) {
+    //             masses[i].vector = new Vector(0, 0);
+    //         }
+    //     }
+    //     painter.draw();
+    // });
+
+    for (let i = 1; i < 4; i++){
+        document.querySelector("#mass" + i).addEventListener("click", function() {
+            let x = document.getElementById("m"+i);
+            let y = document.getElementById("v"+i);
+            let z = document.getElementById("a"+i);
+            if (x.style.display === "none") {
+              x.style.display = "block";
+              y.style.display = 'none';
+              z.style.display = 'none';
+            } else {
+              x.style.display = "none";
+            }        
+        });
+            
+    }
+    for (let i = 1; i < 4; i++){
+        document.querySelector("#vel" + i).addEventListener("click", function() {
+            let y = document.getElementById("m"+i);
+            let x = document.getElementById("v"+i);
+            let z = document.getElementById("a"+i);
+            if (x.style.display === "none") {
+              x.style.display = "block";
+              y.style.display = 'none';
+              z.style.display = 'none';
+            } else {
+              x.style.display = "none";
+            }         
+        });
+    }
+    for (let i = 1; i < 4; i++){
+        document.querySelector("#angle" + i).addEventListener("click", function() {
+            let z = document.getElementById("m"+i);
+            let y = document.getElementById("v"+i);
+            let x = document.getElementById("a"+i);
+            if (x.style.display === "none") {
+              x.style.display = "block";
+              y.style.display = 'none';
+              z.style.display = 'none';
+            } else {
+              x.style.display = "none";
+            }         
+        });
+    }
 }
 
