@@ -21,8 +21,8 @@ function updatePosition(masses, t, point) {
     for (let i = 0; i < masses.length; i++){
         let m = masses[i];
         let v = m.vector;
-        m.x += (v.get_x_component() * t / 1000) / masses[i].mass / 2;
-        m.y += (v.get_y_component() * t / 1000) / masses[i].mass / 2;
+        m.x += (v.get_x_component() * t / 100) / (masses[i].mass * 10);
+        m.y += (v.get_y_component() * t / 100) / (masses[i].mass * 10);
 
         // if (m.x < 0) {
         //     m.x += window.innerWidth;
